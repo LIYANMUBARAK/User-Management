@@ -8,7 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
-import { AuthGuard } from 'src/app/gaurds/auth.guard';
+import { AccessAuthGuard } from 'src/app/gaurds/user-auth.guard';
 
 
 const routes: Routes = [
@@ -20,10 +20,15 @@ const routes: Routes = [
         path:'registration',
         component:RegistrationComponent
     },
+   
     {
-      canActivate:[AuthGuard],
-        path:'profile',
-        component:ProfileComponent
+      canActivate:[AccessAuthGuard],
+      path:'',
+      component:HomeComponent,
+      children:[ {
+          path:'profile',
+          component:ProfileComponent
+      }]
     }
   ];
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -10,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent {
 
-  constructor(private fb: FormBuilder, private router:Router) { }
+  constructor(private fb: FormBuilder, private router:Router,private service:AuthService) { }
 
   submit:boolean=false
-
+  emailUsed!:String
+  
 
   registerForm = this.fb.group({
     name: ['', [Validators.required]],
@@ -24,6 +26,30 @@ export class RegistrationComponent {
 
   onSubmit(){
     this.submit = true
+    const {name,email,password,cpassword} = this.registerForm.value
+    if(cpassword == password){
+      this.registerUser()
+    } 
     
+  }
+
+  registerUser(){
+    console.log(this.registerForm.value)
+    this.service.registerUser(this.registerForm.value).subscribe(
+      (response) => {
+        if(response.emailUsed){
+          this.emailUsed = response.emailUsed
+          setTimeout(()=>{
+            this.emailUsed = '' 
+          },2000)
+        }else{
+          alert('Registraion Completed!');
+          setTimeout(()=>{
+            this.router.navigate([' /login'])
+          },3000)
+        }
+      },(error)=>{
+        console.log(error)
+      })
   }
 }
