@@ -41,7 +41,7 @@ const verifyUser = async (req, res) => {
     const { email, password } = req.body
     
     const userData = await User.findOne({ email: email })
-    if (userData) {
+    if (userData && userData.isAdmin===false) {
 
       const isMatch = await bcrypt.compare(password, userData.password)
       if (isMatch) {

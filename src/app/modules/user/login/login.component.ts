@@ -40,7 +40,7 @@ export class LoginComponent {
           console.log("login")
           localStorage.setItem('userToken', response.userToken);
           localStorage.setItem('userId', response.userId)
-          this.router.navigate(['/user'])
+          this.router.navigate(['/profile'])
         }
         setTimeout(() => {
           this.passMessage = ""
