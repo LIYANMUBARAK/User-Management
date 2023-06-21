@@ -1,0 +1,6 @@
+
+<div *ngIf="(profile$ | async) as profileData" >
+    <div class="d-flex justify-content-center mt-5" *ngFor="let data of profileData">
+        <h1>WELCOME,{{data.name}}</h1>
+    </div>
+</div>

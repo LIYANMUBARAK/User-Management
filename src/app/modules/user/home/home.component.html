@@ -1,11 +1,13 @@
-<div class="container">
-<nav class="navbar navbar-light bg-light justify-content-between">
-    <a class="navbar-brand">Welcome Home</a>
+<div class="">
+<nav class="navbar navbar-light bg-dark justify-content-between">
+    <a class="navbar-brand">User Account</a>
     <form class="form-inline">
-      <a class="btn btn-outline-success my-2 my-sm-0 active" routerLink='/' >Home</a>
-      <a class="btn btn-outline-success my-2 my-sm-0" routerLink='/profile' >Profile</a>
-      <a class="btn btn-outline-danger my-2 my-sm-0" (click)="logout()" >Log Out</a>
+      <a class="btn btn-outline-success my-2 my-sm-0 mx-2" routerLink='/dash' routerLinkActive="active">Home</a>
+      <a class="btn btn-outline-success my-2 my-sm-0 mx-2" routerLink='/profile' routerLinkActive="active">Profile</a>
+      <a class="btn btn-outline-danger my-2 my-sm-0 mx-2"  (click)="logout()" >Log Out</a>
     </form>
   </nav>
+
+  
 </div>
 <router-outlet></router-outlet>

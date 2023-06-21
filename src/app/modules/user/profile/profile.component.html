@@ -1,3 +1,46 @@
 <div class="container">
-<p>profile works!</p>
+    
+        <div class="row " *ngIf="(profile$ | async) as profileData">
+            <div class="flex flex-col" *ngFor="let data of profileData">
+               
+                <div class="d-flex justify-content-center mt-5 ">
+                    <div class="card mb-4 col-4 border-0" style=" box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.1); ">
+                      <div class="card-body text-center">
+                        <!-- <div class="image-container">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                          class="rounded-circle img-fluid" style="width: 150px;">
+                          <span class="icon">
+                            <i class="bi bi-pencil"></i>
+                          </span>
+                        </div> -->
+                 
+                         <!-- <div class="w-10 h-10 col-lg-8 mr-4"> 
+                         <img id="profileImage" src="https://static.vecteezy.com/system/resources/previews/020/213/738/original/add-profile-picture-icon-upload-photo-of-social-media-user-vector.jpg" class="rounded-circle d-none d-sm-block" style="width: 20% ;height: 20%;" *ngIf="!isImage">
+                            <img *ngIf="isImage" [src]="'http://localhost:3000/' + image$" alt="" class="w-100 h-100 rounded-circle d-none d-sm-block">
+                          </div>
+                          <input id="imageInput" type="file" (change)="onFileSelected($event)">  -->
+
+                          <div class="position-relative d-flex justify-content-center">
+                            <img id="profileImage" src="https://static.vecteezy.com/system/resources/previews/020/213/738/original/add-profile-picture-icon-upload-photo-of-social-media-user-vector.jpg" class="rounded-circle d-sm-block" style="width: 50%; height: 50%;" *ngIf="!isImage">
+                            <img *ngIf="isImage" [src]="'http://localhost:3000/' + image$" alt="" class="w-100 h-100 rounded-circle d-none d-sm-block">
+                          
+                            <input id="imageInput" type="file" (change)="onFileSelected($event)" class="position-absolute top-0 left-0 opacity-0" style="width: 50%; height: 80%;cursor: pointer;" >
+                          </div>
+                          
+                       
+                        
+                          <h5 class="my-3">{{data.name}}</h5>
+                        <p class="text-muted mb-1">{{data.email}}</p>
+                  
+                        <div class="d-flex justify-content-center mb-2">
+                          <button type="button" class="btn btn-primary">Follow</button>
+                          <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                        </div>
+                      </div>
+                    </div>
+
+                <h1 class="text-xl font-semibold mb-2"></h1>
+                <p class="text-l text-gray-500 font-semibold"></p>
+            </div>
+        </div>
 </div>

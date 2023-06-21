@@ -8,33 +8,38 @@ import { RegistrationComponent } from './registration/registration.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { AccessAuthGuard } from 'src/app/gaurds/user-auth.guard';
+import { DashComponent } from './dash/dash.component';
 
 
 const routes: Routes = [
-    {
-      path:'login',
-      component:LoginComponent
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'registration',
+    component: RegistrationComponent
+  },
+
+  {
+    canActivate: [AccessAuthGuard],
+    path: '',
+    component: HomeComponent,
+    children: [{
+      path: 'profile',
+      component: ProfileComponent
     },
     {
-        path:'registration',
-        component:RegistrationComponent
-    },
-   
-    {
-      canActivate:[AccessAuthGuard],
-      path:'',
-      component:HomeComponent,
-      children:[ {
-          path:'profile',
-          component:ProfileComponent
-      }]
-    }
-  ];
+      path:'dash',
+      component:DashComponent
+    }]
+  }
+];
 
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
-  })
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
 
-  export class UserRoutingModule { }
+export class UserRoutingModule { }

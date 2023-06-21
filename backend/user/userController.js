@@ -61,7 +61,33 @@ const verifyUser = async (req, res) => {
   }
 }
 
+
+const fetchUser = async (req, res) => {
+  try {
+    const userId = req.query.id
+    await User.findOne({ _id: userId }, { name: 1, email: 1, _id: 0, image: 1 })
+      .then((data) => {
+        res.json({ userDetails: data })
+      })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+const imageUpload = async (req, res) => {
+  try {
+    const id = req.query.id
+    const image = req.file.filename
+    await User.updateOne({ _id: id }, { $set: { image: image } })
+    res.json({ message: 'Image added' })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 module.exports = {
   createUser,
-  verifyUser
+  verifyUser,
+  fetchUser,
+  imageUpload
 }

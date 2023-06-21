@@ -7,6 +7,11 @@ import { HomeComponent } from './home/home.component';
 import { UserRoutingModule } from './user-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DashComponent } from './dash/dash.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { userEffects } from '../store/user.effects';
+import { profileReducer } from '../store/user.reducer';
 
 
 
@@ -15,14 +20,17 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    DashComponent
   ],
   imports: [
     CommonModule,
     UserRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    EffectsModule.forFeature([userEffects]),
+    StoreModule.forFeature( "profile",profileReducer ),
   ]
 })
 export class UserModule { }
