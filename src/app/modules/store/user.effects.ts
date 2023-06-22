@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { ofType, Actions, createEffect } from "@ngrx/effects";
 import { AuthService } from "src/app/services/auth.service";
-import {  fetchUserProfileAPI, fetchUserProfileAPISuccess } from "../store/user.action";
+import {  fetchUserAPI, fetchUserAPISuccess, fetchUserProfileAPI, fetchUserProfileAPISuccess } from "../store/user.action";
 import { map, switchMap, tap } from "rxjs";
 
 @Injectable()
@@ -9,13 +9,14 @@ import { map, switchMap, tap } from "rxjs";
 export class userEffects {
     constructor(private actions$: Actions, private userService: AuthService) { }
 
-    userId: string | null = localStorage.getItem('userId')
-
+ 
     loadUserProfile$ = createEffect(() =>
     this.actions$.pipe(
         ofType(fetchUserProfileAPI),
         switchMap(() => {
-            return this.userService.fetchUserProfile(this.userId)
+            let userId: string | null = localStorage.getItem('userId')
+
+            return this.userService.fetchUserProfile(userId)
                 .pipe(
                     tap((data)=>console.log(data)),
                     map((data) => fetchUserProfileAPISuccess({ profile: data }))
@@ -23,5 +24,21 @@ export class userEffects {
         })
     )
 )
+
+    
+
+loadAllUsers$ = createEffect(() =>
+this.actions$.pipe(
+    ofType(fetchUserAPI),
+    switchMap(() => {
+        return this.userService.fetchAllUsers()
+            .pipe(
+                map((data) => fetchUserAPISuccess({ allUser: Object.values(data) }))
+            )
+    })
+)
+)
+
+
 
 }

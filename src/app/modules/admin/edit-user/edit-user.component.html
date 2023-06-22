@@ -1,0 +1,27 @@
+<div class="container-fluid  d-flex justify-content-center mt-5">
+    <div class="col-3 mt-5">
+        <form class="mt-5" [formGroup]="newUserForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="exampleInputEmail1">User Name</label>
+                <input type="text" class="form-control" placeholder="Name" id="exampleInputEmail1"
+                    aria-describedby="emailHelp" formControlName="name" [(ngModel)]="name">
+                    <div *ngIf="newUserForm.controls['name'].errors">
+                        <p *ngIf="submit&&newUserForm.controls.name.hasError('required')" class="text-red-500">Name Required</p>
+                      </div>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" placeholder="Email" id="exampleInputEmail1"
+                    aria-describedby="emailHelp"  formControlName="email" [(ngModel)]="email">
+                    <div *ngIf="newUserForm.controls['email'].errors">
+                        <p *ngIf="submit&&newUserForm.controls.email.hasError('required')" class="text-red-500">Email Required
+                        <p>
+                        <p *ngIf="newUserForm.controls.email.hasError('email')" class="text-red-500">Invalid Email Format
+                        <p>
+                      </div>
+            </div>
+           
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>

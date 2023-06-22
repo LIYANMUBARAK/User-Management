@@ -45,7 +45,7 @@ export class RegistrationComponent {
         }else{
           alert('Registraion Completed!');
           setTimeout(()=>{
-            this.router.navigate([' /login'])
+            this.router.navigate(['/login'])
           },3000)
         }
       },(error)=>{

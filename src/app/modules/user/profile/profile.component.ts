@@ -41,6 +41,18 @@ export class ProfileComponent implements OnInit{
         this.store.dispatch(fetchUserProfileAPI())
       })
     }
+
+    removeImage() {
+      const sure = confirm("Are you sure!")
+      if (sure) {
+        const id = localStorage.getItem('userId')
+        this.userServices.profileDelete(id).subscribe((response) => {
+          alert("Image Removed")
+          this.isImage = false
+          this.store.dispatch(fetchUserProfileAPI())
+        })
+      }
+    }
   }
 
   

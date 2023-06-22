@@ -13,8 +13,9 @@
  <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
  <!-- Name input -->
  <div class="form-outline mb-4">
+  <label class="form-label" for="registerName">Name</label>
     <input type="text" id="registerName" class="form-control" formControlName="name"/>
-    <label class="form-label" for="registerName">Name</label>
+
     <div *ngIf="registerForm.controls['name'].errors">
       <p *ngIf="submit&&registerForm.controls.name.hasError('required')" class="text-danger">Name Required
       <p>
@@ -28,8 +29,9 @@
 
   <!-- Email input -->
   <div class="form-outline mb-4">
-    <input type="email" id="registerEmail" class="form-control" formControlName="email"/>
     <label class="form-label" for="registerEmail">Email</label>
+    <input type="email" id="registerEmail" class="form-control" formControlName="email"/>
+
     <div *ngIf="registerForm.controls['email'].errors">
       <p *ngIf="submit&&registerForm.controls.email.hasError('required')" class="text-danger">Email Required
       <p>
@@ -40,8 +42,9 @@
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input type="password" id="registerPassword" class="form-control" formControlName="password"/>
     <label class="form-label" for="registerPassword">Password</label>
+    <input type="password" id="registerPassword" class="form-control" formControlName="password"/>
+
     <div *ngIf="registerForm.controls['password'].errors">
       <p *ngIf="submit&&registerForm.controls.password.hasError('required')" class="text-danger">Password Required
       <p>
@@ -52,8 +55,9 @@
 
   <!-- Repeat Password input -->
   <div class="form-outline mb-4">
+    <label class="form-label" for="registerRepeatPassword">Confirm password</label>
     <input type="password" id="registerRepeatPassword" class="form-control" formControlName="cpassword"/>
-    <label class="form-label" for="registerRepeatPassword">Repeat password</label>
+
     <div *ngIf="registerForm.controls['password'].errors">
       <p *ngIf="submit&&registerForm.controls.password.hasError('required')" class="text-danger">Password Required
       <p>

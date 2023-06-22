@@ -22,24 +22,28 @@
 
         <!-- Email input -->
         <div class="form-outline mb-4">
-          <input type="email" id="loginName" class="form-control" formControlName="email"/>
           <label class="form-label" for="loginName">Email or username</label>
+          <input type="email" id="loginName" class="form-control" formControlName="email"/>
+          
           <div *ngIf="loginForm.controls['email'].errors">
             <p *ngIf="submit&&loginForm.controls.email.hasError('required')" class="text-danger">Email Required
             <p>
             <p *ngIf="loginForm.controls.email.hasError('email')" class="text-danger">Invalid Email Format
             <p>
           </div>
+          <p  class="text-danger" *ngIf="emailMessage">{{emailMessage}}</p>
         </div>
 
         <!-- Password input -->
         <div class="form-outline mb-4">
-          <input type="password" id="loginPassword" class="form-control" formControlName="password"/>
           <label class="form-label" for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" class="form-control" formControlName="password"/>
+          
           <div *ngIf="loginForm.controls['password'].errors">
             <p *ngIf="submit&&loginForm.controls.password.hasError('required')" class="text-danger">Password Required</p>
             <p *ngIf="loginForm.controls.password.hasError('pattern')" class="text-danger">Invalid Password Format</p>
           </div>
+          <p class="text-danger" *ngIf="passMessage">{{passMessage}}</p>
         </div>
 
         <!-- 2 column grid layout -->

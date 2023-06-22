@@ -9,3 +9,13 @@ export const fetchUserProfileAPISuccess = createAction(
     '[Profile API] User Profile API Success',
     props<{ profile: Profile[] }>()
 )
+
+
+export const fetchUserAPI = createAction(
+    "[User API] Fetch User API"
+)
+
+export const fetchUserAPISuccess = createAction(
+    "[User API] Fetch User API Success",
+    props<{ allUser: User[] }>()
+)

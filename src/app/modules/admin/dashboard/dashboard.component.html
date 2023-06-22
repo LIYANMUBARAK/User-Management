@@ -1,0 +1,13 @@
+<div class="container-fluid bg-dark">
+    <nav class="navbar navbar-dark d-flex justify-content-between">
+        <div>
+            <h1 style="font-family:'Times New Roman', Times, serif;color:aliceblue">ADMIN</h1>
+        </div>
+        <div>
+            <button class="btn btn-outline-success active my-2 my-sm-0 mx-2 " routerLink="userlist">Home</button>
+            <button class="btn btn-outline-success active my-2 my-sm-0 mx-2 " routerLink="newUser">Create A New User</button>
+            <button class="btn btn-outline-danger active my-2 my-sm-0 mx-2" (click)="logout()">LOGOUT</button>
+        </div>
+    </nav>
+</div>
+<router-outlet></router-outlet>
